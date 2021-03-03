@@ -108,8 +108,17 @@ const disable = function() {
     el.node.removeAttribute('data-aos-duration');
     el.node.removeAttribute('data-aos-delay');
 
+    // setting attributes to null
+    // to try solve issue #646
+    // https://github.com/michalsnik/aos/issues/646
+    el.removeAttribute('data-aos');
+    el.removeAttribute('data-aos-easing');
+    el.removeAttribute('data-aos-duration');
+    el.removeAttribute('data-aos-delay');
+
     if (options.initClassName) {
       el.node.classList.remove(options.initClassName);
+      el.classList.remove(options.initClassName);
     }
 
     if (options.animatedClassName) {
